@@ -42,7 +42,7 @@ spin_exec (void *cookie arg_unused, libcrun_container_t *container arg_unused,
     newargv[0] = "/bin/spin";
     newargv[1] = "up";
     newargv[2] = "--listen";
-    newargv[3] = "0.0.0.0:3000";
+    newargv[3] = "0.0.0.0:80";
     newargv[4] = NULL;
 
     // spin up needs a /tmp folder
@@ -80,31 +80,6 @@ spin_configure_container (void *cookie arg_unused, enum handler_configure_phase 
   };
 
   ret = libcrun_container_do_bind_mount (container, "/usr/local/bin/spin", "/bin/spin", options, 5, err);
-  if (ret != 0)
-    return ret;
-
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libstdc++.so.6", "/lib/aarch64-linux-gnu/libstdc++.so.6", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libgcc_s.so.1", "/lib/aarch64-linux-gnu/libgcc_s.so.1", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/librt.so.1", "/lib/aarch64-linux-gnu/librt.so.1", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libpthread.so.0", "/lib/aarch64-linux-gnu/libpthread.so.0", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libm.so.6", "/lib/aarch64-linux-gnu/libm.so.6", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libdl.so.2", "/lib/aarch64-linux-gnu/libdl.so.2", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/aarch64-linux-gnu/libc.so.6", "/lib/aarch64-linux-gnu/libc.so.6", options, 5, err);
-  if (ret != 0)
-    return ret;
-  ret = libcrun_container_do_bind_mount (container, "/lib/ld-linux-aarch64.so.1", "/lib/ld-linux-aarch64.so.1", options, 5, err);
   if (ret != 0)
     return ret;
 
